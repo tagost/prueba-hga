@@ -1,7 +1,6 @@
 on:
   push:
-    branches:
-      - master
+    branches: [ develop ]
 name: deploy
 jobs:
   deploy:
