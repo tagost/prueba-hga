@@ -1,4 +1,4 @@
-name: ci
+name: deploy master
 
 on:
   push:
