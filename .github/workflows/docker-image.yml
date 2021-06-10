@@ -1,24 +1,33 @@
-name: Staging deployment
+name: ci
 
 on:
   push:
-    tags:
-    - test-*
+    branches:
+      - 'master'
 
-jobs: 
-  build:
-   
+jobs:
+  docker:
     runs-on: ubuntu-latest
-   
     steps:
-      - name: Checkout files    
+      -
+        name: Checkout
         uses: actions/checkout@v2
-
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v1
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: tagost/tagost
-          tag_with_ref: true
-          tag_with_sha: true
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: user/app:latest
