@@ -1,6 +1,10 @@
 on:
-  push:
-    branches: [ develop ]
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Person to greet'
+        required: true
+        default: 'Mona the Octocat'
 name: deploy
 jobs:
   deploy:
