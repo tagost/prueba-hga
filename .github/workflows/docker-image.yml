@@ -37,7 +37,7 @@ jobs:
         with:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
-          KEY: ${{ secrets.KEY }}
+          KEY: ${{ secrets.SSHKEY }}
           PORT: ${{ secrets.PORT }}
           script: |
             # Stop running container
