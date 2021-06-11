@@ -42,6 +42,9 @@ jobs:
 
             # Remove old container
             docker rm -f tagost
+            
+            # Remove old image
+            docker rmi -f tagost/tagost:master
 
             # Run a new container from a new image
             docker run -d \
