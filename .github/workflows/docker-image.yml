@@ -38,7 +38,6 @@ jobs:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
           KEY: ${{ secrets.SSHKEY }}
-          PORT: ${{ secrets.PORT }}
           script: |
             # Stop running container
             docker stop tagost
