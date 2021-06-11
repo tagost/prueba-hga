@@ -37,8 +37,8 @@ jobs:
         with:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
           KEY: ${{ secrets.KEY }}
+          PORT: ${{ secrets.PORT }}
           script: |
             # Stop running container
             docker stop tagost
