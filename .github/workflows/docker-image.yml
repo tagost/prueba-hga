@@ -31,3 +31,23 @@ jobs:
           context: .
           push: true
           tags: tagost/tagost:master
+      
+      - name: Deploy to Digital Ocean droplet via SSH action
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          KEY: ${{ secrets.KEY }}
+          script: |
+            # Stop running container
+            docker stop tagost
+
+            # Remove old container
+            docker rm -f tagost
+
+            # Run a new container from a new image
+            docker run -d \
+            --restart always \
+            -p 8080:80 \
+            --name tagost tagost/tagost:master
