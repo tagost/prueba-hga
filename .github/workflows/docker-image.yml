@@ -1,5 +1,4 @@
 name: deploy master
-
 on:
   push:
     branches:
